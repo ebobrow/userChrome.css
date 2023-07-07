@@ -4,10 +4,10 @@
 }
 
 /* hide sidebar header */
-#sidebar-header {
+/* #sidebar-header {
   display: none;
 }
-
+ */
 /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_main_toolbar.css made available under Mozilla Public License v. 2.0
 See the above repository for updates as well as full license text. */
 
@@ -17,9 +17,9 @@ See the above repository for updates as well as full license text. */
 :root[uidensity="compact"]{ --uc-navbar-transform: -34px }
 
 #navigator-toolbox > div{ display: contents; }
-/* :root[sessionrestored] :where(#nav-bar,#PersonalToolbar,#tab-notification-deck,.global-notificationbox){
-  transform: translateY(var(--uc-navbar-transform))
-} */
+:root[sessionrestored] :where(#nav-bar,#PersonalToolbar,#tab-notification-deck,.global-notificationbox){
+  transform: translateY(-30px)
+}
 :root:is([customizing],[chromehidden*="toolbar"]) :where(#nav-bar,#PersonalToolbar,#tab-notification-deck,.global-notificationbox){
   transform: none !important;
   opacity: 1 !important;
@@ -27,7 +27,7 @@ See the above repository for updates as well as full license text. */
 
 #nav-bar:not([customizing]){
   opacity: 0;
-/*   transition:  transform 400ms ease 1s, opacity 400ms ease 1.8s !important; */
+  transition:  transform 400ms ease 0.5s, opacity 400ms ease 0.5s !important;
   position: relative;
   z-index: 2;
 }
@@ -35,23 +35,23 @@ See the above repository for updates as well as full license text. */
 
 /* Show when toolbox is focused, like when urlbar has received focus */
 #navigator-toolbox:focus-within > .browser-toolbar{
-/*   transform: translateY(0); */
+  transform: translateY(0);
   opacity: 1;
-/*   transition-duration: 500ms, 200ms !important; */
-/*   transition-delay: 0s !important; */
+  transition-duration: 500ms, 200ms !important;
+  transition-delay: 0s !important;
 }
 /* Show when toolbox is hovered */
 #titlebar:hover ~ .browser-toolbar,
 #nav-bar:hover,
 #nav-bar:hover + #PersonalToolbar{
-/*   transform: translateY(0); */
+  transform: translateY(0);
   opacity: 1;
-/*   transition-duration: 500ms, 200ms !important; */
-/*   transition-delay: 0s !important; */
+  transition-duration: 500ms, 200ms !important;
+  transition-delay: 0s !important;
 }
 
 /* Bookmarks toolbar needs so extra rules */
-/* #PersonalToolbar{ transition: transform 400ms ease 1.8s !important; position: relative; z-index: 1 } */
+#PersonalToolbar{ transition: transform 400ms ease 0.5s !important; position: relative; z-index: 1 }
 
 /* Move up the content view */
 :root[sessionrestored]:not([inFullscreen]) > body > #browser{ margin-top: var(--uc-navbar-transform); }
